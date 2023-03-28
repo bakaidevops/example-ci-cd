@@ -19,7 +19,7 @@ function App() {
     <div>
       <div className='our-team'>
       <h1 className='item' >APP</h1>
-      <h2 className='item'>Working CI/CD</h2>
+      <h2 className='item'>Working CI/CD part 2</h2>
       </div>
 
       {(typeof backendData.users === "undefined") ? (
