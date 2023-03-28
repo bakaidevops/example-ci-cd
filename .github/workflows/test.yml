@@ -55,4 +55,4 @@ jobs:
 
       - name: Upgrade app with new features
         run: |
-          helm upgrade test .helm  --set app_container_tag=${{ env.IMAGE_TAG }}
+          helm upgrade prod .helm  --set app_container_tag=${{ env.IMAGE_TAG }}
