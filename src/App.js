@@ -17,8 +17,10 @@ function App() {
 
   return (
     <div>
-      <h1 className='item' style={{fontSize: '20px'}}>APP</h1>
-      <h2 className='item'>CI/CD</h2>
+      <div className='our-team'>
+      <h1 className='item' >APP</h1>
+      <h2 className='item'>Working CI/CD</h2>
+      </div>
 
       {(typeof backendData.users === "undefined") ? (
         <p className='item'>Loading...</p>
