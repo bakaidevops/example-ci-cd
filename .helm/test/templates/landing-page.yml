@@ -20,9 +20,9 @@ spec:
         - containerPort: {{ .Values.landing_port }}
         resources:
           requests:
-            cpu: 500m
+            cpu: 50m
           limits:
-            cpu: 500m
+            cpu: 50m
 
 ---
 

@@ -20,9 +20,9 @@ spec:
         - containerPort: {{ .Values.api_port }}
         resources:
           requests:
-            cpu: 500m
+            cpu: 50m
           limits:
-            cpu: 500m
+            cpu: 50m
       imagePullSecrets:
       - name: docker-secret
 
