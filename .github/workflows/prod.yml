@@ -1,4 +1,4 @@
-name: Demo K8s Workflow
+name: Production
 
 env:
   IMAGE_TAG: "${{ github.run_number }}.124"
@@ -64,6 +64,6 @@ jobs:
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://github.com/rtCamp.png?size=48
           SLACK_MESSAGE: 'Can you check prod https://app.bakai.store :rocket:'
-          SLACK_TITLE: Post Title
+          SLACK_TITLE: Successfully deployed to the production
           SLACK_USERNAME: rtCamp
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

@@ -1,6 +1,8 @@
-name: Demo K8s Workflow
-
-on: workflow_dispatch
+name: Test Roll Back Manually
+on:
+  pull_request:
+    types: [closed]
+    branches: [ test ]
 
 jobs:
   build:
@@ -27,3 +29,14 @@ jobs:
 
       - name: Upgrade app with new features
         run: helm rollback test
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: devops
+          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: 'Can you check https://test-app.bakai.store :rocket:'
+          SLACK_TITLE: Rollback happened succesfully
+          SLACK_USERNAME: rtCamp
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
