@@ -1,7 +1,6 @@
 name: Test Roll Back 
 on:
-  pull_request:
-    types: [closed]
+  workflow_dispatch:
     branches: [ test ]
 
 jobs:
