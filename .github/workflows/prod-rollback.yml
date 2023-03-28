@@ -2,7 +2,7 @@ name: Test Roll Back
 on:
   pull_request:
     types: [closed]
-    branches: [ test ]
+    branches: [ master ]
 
 jobs:
   build:
