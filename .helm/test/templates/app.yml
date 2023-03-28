@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app_name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.app_replica }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app_container_label }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app_container_label }}
+    spec:
+      containers:
+      - name: {{ .Values.app_container_label }}
+        image: "{{ .Values.app_container_image }}:{{ .Values.app_container_tag }}"
+        ports:
+        - containerPort: {{ .Values.app_port }}
+        resources:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 50m
+     
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.app_service_name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+  - port: {{ .Values.app_service_port }}
+    targetPort: {{ .Values.app_service_target_port }}
+  selector:
+    app: {{ .Values.app_container_label }}
+  type: NodePort
+  

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.api_name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.api_replica }}
+  selector:
+    matchLabels:
+      app: {{ .Values.api_container_label }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.api_container_label }}
+    spec:
+      containers:
+      - name: {{ .Values.api_container_label }}
+        image: "{{ .Values.api_container_image }}:{{ .Values.api_container_tag }}"
+        ports:
+        - containerPort: {{ .Values.api_port }}
+        resources:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 50m
+      imagePullSecrets:
+      - name: docker-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.api_service_name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  ports:
+  - port: {{ .Values.api_service_port }}
+    targetPort: {{ .Values.api_service_target_port }}
+  selector:
+    app: {{ .Values.api_container_label }}
+  type: NodePort
+  
