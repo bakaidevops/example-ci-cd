@@ -25,9 +25,9 @@ spec:
         - containerPort: {{ .Values.app_port }}
         resources:
           requests:
-            cpu: 500m
+            cpu: 50m
           limits:
-            cpu: 500m
+            cpu: 50m
         readinessProbe:
           httpGet:
             path: /

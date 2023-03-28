@@ -20,9 +20,15 @@ spec:
         - containerPort: {{ .Values.admin_port }}
         resources:
           requests:
-            cpu: 500m
+            cpu: 50m
           limits:
-            cpu: 500m
+            cpu: 50m
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
 
 ---
 

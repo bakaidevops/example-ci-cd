@@ -26,7 +26,7 @@ jobs:
         with:
           context: .
           dockerfile: Dockerfile
-          tags: frdevelopergen/react-app-nginx:${{ env.IMAGE_TAG }}
+          tags: frdevelopergen/react-app-nginx:${{ env.IMAGE_TAG }}.5
           
 
       - name: Push Docker image to Docker Hub
