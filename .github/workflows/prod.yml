@@ -1,7 +1,7 @@
 name: Demo K8s Workflow
 
 env:
-  IMAGE_TAG: ${{ github.run_number }}
+  IMAGE_TAG: "${{ github.run_number }}.124"
 
 
 on:
