@@ -18,12 +18,12 @@ function App() {
   return (
     <div>
       <div className='our-team'>
-      <h1 className='item' >APP</h1>
-      <h2 className='item'>Working CI/CD part 2</h2>
+      <h1 className='hello' >APP</h1>
+      <h2 className='hello'>Working CI/CD part 2</h2>
       </div>
 
       {(typeof backendData.users === "undefined") ? (
-        <p className='item'>Loading...</p>
+        <p className='hello'>Loading...</p>
       ) : (
          backendData.users.map((user, i) => (
           <div className='our-team'>
