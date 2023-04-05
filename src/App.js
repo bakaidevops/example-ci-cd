@@ -18,7 +18,6 @@ function App() {
   return (
     <div>
       <div className='our-team'>
-      <h1 className='hello' >APP</h1>
       </div>
 
       {(typeof backendData.users === "undefined") ? (
