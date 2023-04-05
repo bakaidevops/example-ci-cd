@@ -3,7 +3,7 @@ name: Production Pull Request for Testing
 
 on:
   release:
-    types: [published]
+    types: [created]
 
 jobs:
   test:
