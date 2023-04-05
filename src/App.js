@@ -21,6 +21,7 @@ function App() {
       </div>
 
       {(typeof backendData.users === "undefined") ? (
+        <p className='hello'>Loading...</p>
       ) : (
          backendData.users.map((user, i) => (
           <div className='our-team'>
