@@ -1,0 +1,27 @@
+name: Deploy to the prod enviroment
+
+env:
+  PROD_IMAGE: wedevx/app
+  DEPLOYMENT: app-deploy
+
+on:
+  workflow_dispatch:
+    branches: [ test ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.61.0 # Don't use @master unless you're happy to test the latest version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $PROD_IMAGE_TAG
+      
+      - name: Print PROD_IMAGE_TAG
+        run: echo ${{ env.PROD_IMAGE_TAG }}
